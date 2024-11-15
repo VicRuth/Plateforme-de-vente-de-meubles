@@ -1,0 +1,48 @@
+<div class="py-4">
+  <div class="container px-4 mx-auto">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <!-- Je boucle dans le tableau products : Product[] -->
+      <ul *ngFor="let product of products">
+        <li class="p-8 list-none bg-white rounded-lg shadow-lg">
+          <div class="relative overflow-hidden">
+            <!-- <img
+              class="object-cover w-full h-full"
+              [src]="product.imageUrl"
+              [alt]="product.title"
+            /> -->
+            <img
+              class="object-cover w-48 h-48"
+              [src]="product.imageUrl || 'assets/placeholder.jpg'"
+              [alt]="product.title"
+            />
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <div
+              class="absolute inset-0 flex items-center justify-center"
+            ></div>
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-gray-900">
+            {{ product.title }}
+          </h3>
+          <!-- <p class="mt-2 text-sm text-gray-500">{{ product.category }}</p> -->
+          <span class="text-lg font-bold text-gray-900">{{
+            product.price | currency : "EUR" : "symbol" : "1.2-2"
+          }}</span>
+          <div class="flex items-center justify-between mt-4">
+            <button
+              class="w-1/2 px-4 py-2 mx-2 font-bold text-white bg-gray-900 rounded-full hover:bg-gray-800"
+            >
+              Ajouter
+            </button>
+            <!-- Lien de redirection vers la page detail ... Probavlement à modifier -->
+            <a
+              [routerLink]="['/detail', product.id]"
+              class="w-1/2 px-4 py-2 mx-2 font-bold text-center text-white rounded-full bg-fuckingbrown hover:bg-red-500"
+            >
+              Détail
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

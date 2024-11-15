@@ -1,0 +1,45 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Liste des Produits</h1>
+
+  <!-- Liste triée des noms de produits avec boutons cliquables -->
+  <div *ngFor="let groupeProduit of produits">
+    <button
+      class="text-black hover:text-blue-500 no-underline mb-2"
+      (click)="afficherProduitsGroupe(groupeProduit.items)"
+    >
+      {{ groupeProduit.name }}
+    </button>
+  </div>
+
+  <!-- Affichage des catégories lorsque les produits sont sélectionnés -->
+  <div *ngIf="produitsAffiches.length > 0" class="mt-6">
+    <h2 class="text-xl font-semibold mb-2">
+      Catégories associées
+    </h2>
+    <div *ngFor="let produit of produitsAffiches" class="border p-4 mb-2 rounded-lg">
+      
+      <ul>
+        <!-- Afficher les catégories sous forme de boutons cliquables -->
+        <li *ngFor="let categorie of afficherCategories(produit)">
+          <button
+            class="text-blue-500 hover:underline"
+            (click)="afficherProduitsDeCategorie(categorie)"
+          >
+            {{ categorie | titlecase }}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Affichage du produit sélectionné et des autres produits de la même catégorie -->
+<div *ngIf="produitsAffichesParCategorie.length > 0" class="mt-6">
+  <h2 class="text-xl font-semibold mb-2">
+    Produits associés
+  </h2>
+  <div *ngFor="let produit of produitsAffichesParCategorie; let i = index" class="border p-4 mb-2 rounded-lg">
+    <p><strong>Produit :</strong> {{ produit.items[0].title }}</p>
+    <p><strong>Prix :</strong> {{ produit.items[0].price | currency }}</p>
+  </div>
+</div>
+</div>

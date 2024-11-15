@@ -1,0 +1,27 @@
+<div class="mb-6">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Categories</h2>
+    <div class="space-y-4">
+      <button
+        *ngFor="let categorie of categories"
+        (click)="afficherProduitsDeCategorie(categorie)"
+        class="text-lg text-blue-600 hover:underline w-full text-left"
+      >
+        {{ categorie | titlecase }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Affichage des produits seulement après avoir cliqué sur une catégorie -->
+  <div *ngIf="produitsAffiches.length > 0">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Produits de la catégorie</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div
+        *ngFor="let produit of produitsAffiches"
+        class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+      >
+        <h3 class="text-lg font-semibold text-gray-700 mb-2">{{ produit.title }}</h3>
+        <p class="text-sm text-gray-500">Price: ${{ produit.price }}</p>
+        <p class="text-sm text-gray-400">Category: {{ produit.category }}</p>
+      </div>
+    </div>
+  </div>

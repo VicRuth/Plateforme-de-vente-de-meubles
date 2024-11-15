@@ -1,0 +1,28 @@
+
+
+<div class="h-full p-6 bg-white rounded-lg shadow-lg sidebar">
+  <h2 class="mb-6 text-2xl font-bold text-gray-800"></h2>
+  <div
+    class="grid grid-cols-1 gap-6 category-container sm:grid-cols-2 md:grid-cols-3"
+  >
+    <div *ngFor="let family of families" class="text-center category-item">
+      <div class="flex flex-col items-center category-content">
+        <!-- Image de la catégorie dans un rectangle vertical -->
+        <img
+
+          src="assets/icons8-meubles-100.png"
+
+          alt="Category Image"
+          class="object-cover w-32 h-40 mb-3 border border-gray-300 shadow-md category-image"
+        />
+
+        <!-- Lien vers la catégorie -->
+        <a
+          href="#"
+          class="text-sm font-semibold text-gray-700 transition-colors duration-200 hover:text-blue-600"
+          >{{ family.name }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

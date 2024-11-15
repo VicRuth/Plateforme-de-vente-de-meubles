@@ -1,0 +1,35 @@
+<div class="h-screen w-85 bg-white text-black p-0 m-0 flex flex-col">
+  <!-- Section de boutons pour basculer entre les vues -->
+  <div class="flex justify-around p-2 border-b border-gray-300">
+    <button
+      (click)="showCategories()"
+      [ngClass]="{
+        'text-blue-500 font-semibold': isCategoriesVisible,
+        'text-gray-700': !isCategoriesVisible
+      }"
+      class="px-4 py-2 focus:outline-none hover:text-blue-500 transition-colors"
+    >
+      Espaces
+    </button>
+    <button
+      (click)="showListeProduits()"
+      [ngClass]="{
+        'text-blue-500 font-semibold': isListeProduitsVisible,
+        'text-gray-700': !isListeProduitsVisible
+      }"
+      class="px-4 py-2 focus:outline-none hover:text-blue-500 transition-colors"
+    >
+      Liste de Produits
+    </button>
+  </div>
+
+  <!-- Contenu de la sidebar avec affichage conditionnel -->
+  <div class="flex-1 overflow-y-auto">
+    <div *ngIf="isCategoriesVisible">
+      <app-families></app-families>
+    </div>
+    <div *ngIf="isListeProduitsVisible">
+      <app-liste-produits></app-liste-produits>
+    </div>
+  </div>
+</div>

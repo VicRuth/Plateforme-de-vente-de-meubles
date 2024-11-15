@@ -1,0 +1,19 @@
+<!-- Composant d'en-tête de l'application -->
+<app-header></app-header>
+
+<!-- Structure principale de la page avec une disposition flex -->
+<div class="flex w-full">
+  <!-- Sidebar occupant un tiers de la largeur totale de la page -->
+  <div class="w-1/3">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <!-- Zone de contenu principal, prenant les deux tiers restants -->
+  <div class="w-2/3">
+    <!-- Directive `router-outlet` pour charger les composants en fonction de la route active -->
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- Composant de pied de page de l'application -->
+<app-footer></app-footer>
